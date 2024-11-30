@@ -2,8 +2,6 @@
 // Import internal components
 // Import styles
 // Fetch or get data
-
-import Link from "next/link";
 import { Button } from "../ui/button";
 import ImageFrame from "../ui/ImageFrame";
 

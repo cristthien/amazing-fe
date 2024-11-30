@@ -4,7 +4,6 @@ import Divider from "@/components/ui/Divider";
 import ImageFrame from "@/components/ui/ImageFrame";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
-import { parseJsonString } from "@/lib/utils";
 import BiddingComponent from "./BiddingComponent";
 // Import internal components
 // Import styles
@@ -14,6 +13,11 @@ interface ProductWrapperProps {
   className?: string;
   productDetail: any;
 }
+
+type Specification = {
+  key: string;
+  value: string;
+};
 
 const ProductWrapper: React.FC<ProductWrapperProps> = ({
   className,
@@ -32,7 +36,9 @@ const ProductWrapper: React.FC<ProductWrapperProps> = ({
     return value;
   });
 
-  const specifications = parseJsonString(productDetail.specifications);
+  const specifications = productDetail.specifications
+    ? (JSON.parse(productDetail.specifications) as Specification[])
+    : null;
   const { user } = productDetail;
 
   return (
@@ -85,7 +91,7 @@ const ProductWrapper: React.FC<ProductWrapperProps> = ({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {specifications && (
+          {specifications && specifications.length > 0 && (
             <table className="min-w-full table-auto ">
               <thead>
                 <tr>
@@ -94,14 +100,12 @@ const ProductWrapper: React.FC<ProductWrapperProps> = ({
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(specifications).map(([key, value], index) => (
+                {specifications.map((spec, index) => (
                   <tr key={index}>
                     <td className="px-4 py-2 font-semibold capitalize">
-                      {key}
+                      {spec.key}
                     </td>
-                    <td className="px-4 py-2 capitalize">
-                      {Array.isArray(value) ? value.join(", ") : String(value)}
-                    </td>
+                    <td className="px-4 py-2 capitalize">{spec.value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -116,7 +120,7 @@ const ProductWrapper: React.FC<ProductWrapperProps> = ({
 export default ProductWrapper;
 function ImageTabs({ images }: { images: string[] }) {
   return (
-    <Tabs className="w-full h-full " defaultValue="image1">
+    <Tabs className="w-full h-full " defaultValue="image0">
       {images.map((value: string, i: number) => {
         return (
           <TabsContent
@@ -139,7 +143,7 @@ function ImageTabs({ images }: { images: string[] }) {
         {images.map((value: string, i: number) => {
           return (
             <TabsTrigger
-              className=" p-0 mx-2 rounded-lg border border-white data-[state=active]:border-black bg-[#e5e5e5] "
+              className=" p-0 mx-2 rounded-lg border border-white data-[state=active]:border-black bg-[#e5e5e5] overflow-hidden"
               key={i}
               value={`image${i}`}
             >

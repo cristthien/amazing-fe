@@ -15,23 +15,6 @@ interface invoicesProps {
 
 const Bids: React.FC<invoicesProps> = ({ className }) => {
   const [invoices, setInvoices] = useState<InvoiceListType | null>();
-  const [selectedInvoiceId, setSelectedInvoiceId] = useState<number | null>(
-    null
-  ); // Quản lý ID invoice cần cập nhật
-  const [isModalOpen, setIsModalOpen] = useState(false); // Trạng thái mở/đóng modal
-
-  const handleUpdateAddress = (id: number) => {
-    setSelectedInvoiceId(id); // Lưu lại ID invoice
-    setIsModalOpen(true); // Mở modal
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false); // Đóng modal
-    setSelectedInvoiceId(null); // Reset ID
-  };
-  const handleSaveAddress = async (updatedAddress: string) => {
-    console.log(updatedAddress);
-  };
 
   const fetchinvoices = async (page: number) => {
     const reponse = await invoiceApiRequest.getInvoice(page, 5);

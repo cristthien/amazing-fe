@@ -23,11 +23,7 @@ import { formatCurrencyUSD } from "@/lib/utils";
 import { InvoiceAdminListType } from "@/schemaValidations/invoice.schema";
 import invoiceApiRequest from "@/apiRequest/invoice";
 
-interface pageProps {
-  className?: string;
-}
-
-const page: React.FC<pageProps> = ({ className }) => {
+const page = () => {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1; // Default to 1 if 'page' is not a valid number
   const limit = Number(searchParams.get("limit")) || 5; // Default to 10 if 'limit' is not a valid number

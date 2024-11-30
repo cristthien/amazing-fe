@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: productDetail.name,
       description: productDetail.description,
-      url: `${process.env.NEXT_PUBLIC_URL}/product/${id}`,
+      url: `${process.env.NEXT_PUBLIC_URL}/product/${productDetail.slug}`,
       siteName: "eBai",
       images: [
         {
@@ -78,7 +78,7 @@ export default async function Page({ params }: Props) {
     { label: "Trang chủ", link: "/" },
     {
       label: category.name,
-      link: `/category/${category.id}`,
+      link: `/categories/${category.id}`,
     },
   ];
   return (

@@ -7,7 +7,6 @@ import { Dot } from "lucide-react";
 import io, { Socket } from "socket.io-client";
 import { isClient } from "@/lib/http";
 import { BidListType } from "@/schemaValidations/bids.schema";
-import { calculateTimeLeft } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
 interface BiddingComponentProps {

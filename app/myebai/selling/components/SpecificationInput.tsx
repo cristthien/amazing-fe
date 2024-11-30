@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { X } from "lucide-react"; // Import biểu tượng X từ Lucide
+import { X, Plus } from "lucide-react"; // Thêm biểu tượng Plus cho nút Thêm Trường
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +10,11 @@ interface Field {
   value: string;
 }
 
-export default function ProductForm() {
+export default function SpecificationInput({
+  className,
+}: {
+  className?: string;
+}) {
   // Khai báo state fields là mảng các đối tượng Field
   const [fields, setFields] = useState<Field[]>([{ key: "", value: "" }]);
 
@@ -39,47 +43,51 @@ export default function ProductForm() {
     setFields(newFields);
   };
 
-  // Hàm submit form
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(fields);
-  };
-
   return (
-    <div className="p-4">
-      <form onSubmit={submitForm}>
-        {fields.map((field, index) => (
-          <div key={index} className="flex space-x-2 mb-4">
+    <div className={className}>
+      <h2 className="text-xl font-semibold mb-4">Specification</h2>
+      {fields.map((field, index) => (
+        <div
+          key={index}
+          className="flex items-center space-x-4 mb-4 p-4 border rounded-lg shadow-sm"
+        >
+          <div className="flex-1">
             <Input
               name="key"
               placeholder="Key"
               value={field.key}
               onChange={(e) => handleChange(index, e)}
-              className="flex-1"
+              className="border-gray-300 focus:border-blue-500"
             />
+          </div>
+          <div className="flex-1">
             <Input
               name="value"
               placeholder="Value"
               value={field.value}
               onChange={(e) => handleChange(index, e)}
-              className="flex-1"
+              className="border-gray-300 focus:border-blue-500"
             />
-            <Button
-              type="button"
-              onClick={() => removeField(index)}
-              className="ml-2 bg-transparent text-red-500"
-            >
-              <X size={20} />
-            </Button>
           </div>
-        ))}
-        <Button type="button" onClick={addField} className="mb-4">
-          Thêm Trường
-        </Button>
-        <Button type="submit" className="bg-blue-500 text-white">
-          Gửi
-        </Button>
-      </form>
+          <Button
+            type="button"
+            onClick={() => removeField(index)}
+            className="ml-2 bg-transparent text-red-500 hover:bg-red-200 p-2 rounded-full"
+          >
+            <X size={20} />
+          </Button>
+        </div>
+      ))}
+
+      {/* Nút thêm trường với biểu tượng dấu cộng */}
+      <Button
+        type="button"
+        onClick={addField}
+        className="flex items-center justify-center bg-blue-500 text-white hover:bg-blue-600 p-2 rounded-full shadow-md"
+      >
+        <Plus size={20} className="mr-2" />
+        Thêm Trường
+      </Button>
     </div>
   );
 }

@@ -1,8 +1,4 @@
 import {
-  Tag,
-  Users,
-  Settings,
-  Bookmark,
   LayoutGrid,
   LucideIcon,
   ShoppingBag,

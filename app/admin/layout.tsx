@@ -1,7 +1,7 @@
 "use client";
 
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/app/app-provider";
 

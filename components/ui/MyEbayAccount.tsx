@@ -10,7 +10,6 @@ import {
 } from "./navigation-menu";
 import { Button } from "./button";
 import { useAppContext } from "@/app/app-provider";
-import Divider from "./Divider";
 
 const MyEbayAccount = () => {
   const { logout, user } = useAppContext();

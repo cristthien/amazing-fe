@@ -29,7 +29,9 @@ const BreadCumb: React.FC<BreadCumbProps> = ({
         <span>Home</span>
       </Link>
       <span className="mx-2">/</span>
-      <span className=" hover:underline cursor-pointer">{data[1].label}</span>
+      <span className=" hover:underline cursor-pointer">
+        <Link href={data[1].link}>{data[1].label}</Link>
+      </span>
       <span className="mx-2">/</span>
       <Link href={data[1].link} className="font-medium">
         {productName}

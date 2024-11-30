@@ -3,6 +3,8 @@
 // Import styles
 // Fetch or get data
 
+import clsx from "clsx";
+
 interface FooterProps {
   className?: string;
 }
@@ -80,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
     //     </div>
     //   </div>
     // </footer>
-    <div className="w-full bg-gray-100 py-6">
+    <div className={clsx("w-full bg-gray-100 py-6", className)}>
       <div className=" container mx-auto text-sm hidden md:grid grid-cols-2 md:grid-cols-6 gap-4 px-6 center ">
         {/* Cột 1 */}
         <div>
@@ -135,7 +137,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           <h2 className="font-bold mb-2">Stay connected</h2>
           <ul>
             <li>
-              <a href="#">eBay's Blogs</a>
+              <a href="#">eBays Blogs</a>
             </li>
             <li>
               <a href="#">Facebook</a>

@@ -6,10 +6,8 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogFooter,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import productApiRequest from "@/apiRequest/products";
 import { ProductSearchListType } from "@/schemaValidations/products.schema";
 import ImageFrame from "./ImageFrame";

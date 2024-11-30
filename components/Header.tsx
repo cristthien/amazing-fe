@@ -25,22 +25,23 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Left Section */}
         <div className="flex items-center ">
-          <Link href="/">
+          <Link href="/" className="w-[80px]">
             <Image
               src="/ebai.svg" // Đường dẫn tương đối từ thư mục public
               alt="Example SVG"
-              width={80} // Đặt kích thước
-              height={32}
-              className="mr-2"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="w-full h-auto"
             />
           </Link>
           <Categories />
         </div>
         {/* Search Bar */}
         <SearchBar />
-        <a className="block min-[350px]:hidden" href="/products/search">
+        <Link className="block min-[350px]:hidden" href="/products/search">
           <Search></Search>
-        </a>
+        </Link>
       </div>
       <Divider className="h-[1px] w-[100%] bg-gray-300 " />
     </div>

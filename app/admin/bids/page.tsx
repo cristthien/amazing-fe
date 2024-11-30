@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { ContentLayout } from "@/components/admin-panel/content-layout";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -16,7 +15,6 @@ import auctionApiRequest from "@/apiRequest/auction";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -26,11 +24,7 @@ import Link from "next/link";
 import { AuctionListType } from "@/schemaValidations/auction.schema";
 import { formatCurrencyUSD } from "@/lib/utils";
 
-interface pageProps {
-  className?: string;
-}
-
-const page: React.FC<pageProps> = ({ className }) => {
+const page = () => {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1; // Default to 1 if 'page' is not a valid number
   const limit = Number(searchParams.get("limit")) || 5; // Default to 10 if 'limit' is not a valid number

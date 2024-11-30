@@ -16,7 +16,7 @@ const DiscountBanner: React.FC<DiscountBannerProps> = ({ className }) => {
       <div className="flex justify-between flex-col md:flex-row items-center p-6 bg-[#FFBD14] rounded-[16px] ">
         <div className="">
           <h1 className="text-2xl font-bold text-[#553B06]">
-            Save on cards before they're gone
+            Save on cards before they are gone
           </h1>
           <p className="text-sm font-semibold my-1">
             Use code TCGIFT24 on your favorite collectible and game cards.
